@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+$:.unshift File.join(File.dirname(__FILE__),'..','lib')
+
+require 'rubygems'
+require 'kofi'
+require 'trollop'
+
+opts = Trollop::options do
+  opt :locale_path, "Path to your locale YAML files", :default => File.join(Dir.pwd, 'config', 'locales')
+end
+
+Kofi.run(opts, ARGV)
