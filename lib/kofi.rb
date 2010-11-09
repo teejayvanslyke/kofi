@@ -3,20 +3,23 @@ require 'yaml'
 module Kofi
 
   class << self
+
+    attr_reader :trail
+
   def run(opts, args)
     @locale_path = opts[:locale_path]
-    @key         = args.shift.split('.')
-    @locale      = @key.first
+    @trail       = args.shift.split('.')
+    @locale      = trail.first
     @value       = args.shift
 
     if @value
-      data = set YAML::load_file(filename), @key, @value
+      data = set YAML::load_file(filename), trail, @value
       File.open(filename, 'w') do |file|
-        p YAML::dump(data, file)
+        YAML::dump(data, file)
       end
     end
 
-    puts "=> #{get(@key).inspect}"
+    puts "#{trail.join('.')} => #{get(trail).inspect}"
   end
 
   def filename
@@ -37,6 +40,7 @@ module Kofi
   end
 
   def hash_to_be_merged(trail, value)
+    trail = trail.dup
     if trail.size > 0
       key = trail.shift
       { key => hash_to_be_merged(trail, value) }
