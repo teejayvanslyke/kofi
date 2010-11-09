@@ -1,6 +1,11 @@
 = kofi
 
-Description goes here.
+A command line utility for setting and retrieving Rails I18n strings.
+
+== Usage
+
+    >> kofi en.log_in "Log in"
+    >> kofi en.passwords.reset_message "Reset your password"
 
 == Note on Patches/Pull Requests
  

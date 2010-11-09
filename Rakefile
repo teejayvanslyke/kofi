@@ -5,11 +5,12 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "kofi"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Rails I18n command line interface}
+    gem.description = %Q{A utility for setting and retrieving Rails I18n strings from the command line}
     gem.email = "teejay.vanslyke@gmail.com"
     gem.homepage = "http://github.com/teejayvanslyke/kofi"
     gem.authors = ["T.J. VanSlyke"]
+    gem.add_dependency 'trollop'
     gem.add_development_dependency "rspec", ">= 1.2.9"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
